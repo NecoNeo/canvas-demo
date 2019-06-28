@@ -91,9 +91,34 @@
   !*** ./src/index.ts ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("var desc = 'canvas demo';\r\nconsole.log(desc);\r\n\n\n//# sourceURL=webpack:///./src/index.ts?");
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nvar user_interface_1 = __webpack_require__(/*! ./user-interface */ \"./src/user-interface.ts\");\r\nvar random_walk_1 = __webpack_require__(/*! ./random-walk/random-walk */ \"./src/random-walk/random-walk.ts\");\r\nvar ui = user_interface_1.UserInterface.getInstance();\r\nvar walker = new random_walk_1.RandomWalk();\r\nwalker.init(ui);\r\nwalker.beginWalking();\r\n\n\n//# sourceURL=webpack:///./src/index.ts?");
+
+/***/ }),
+
+/***/ "./src/random-walk/random-walk.ts":
+/*!****************************************!*\
+  !*** ./src/random-walk/random-walk.ts ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nvar RandomWalk = /** @class */ (function () {\r\n    function RandomWalk() {\r\n        this.position = {\r\n            x: 300,\r\n            y: 300,\r\n        };\r\n    }\r\n    RandomWalk.prototype.init = function (ui) {\r\n        var canvas = ui.getCanvas();\r\n        this.canvasContext = canvas.getContext('2d');\r\n        this.canvasContext.strokeStyle = '#000000';\r\n    };\r\n    RandomWalk.prototype.beginWalking = function () {\r\n        var _this = this;\r\n        setInterval(function () {\r\n            _this.drawPosition();\r\n            _this.walk();\r\n        }, 5);\r\n    };\r\n    RandomWalk.prototype.drawPosition = function () {\r\n        this.canvasContext.strokeRect(this.position.x, this.position.y, 1, 1);\r\n    };\r\n    RandomWalk.prototype.walk = function () {\r\n        var dir = Math.random();\r\n        if (dir <= 0.25) {\r\n            this.position.x += 1;\r\n        }\r\n        else if (dir <= 0.5) {\r\n            this.position.x -= 1;\r\n        }\r\n        else if (dir <= 0.75) {\r\n            this.position.y += 1;\r\n        }\r\n        else {\r\n            this.position.y -= 1;\r\n        }\r\n    };\r\n    return RandomWalk;\r\n}());\r\nexports.RandomWalk = RandomWalk;\r\n\n\n//# sourceURL=webpack:///./src/random-walk/random-walk.ts?");
+
+/***/ }),
+
+/***/ "./src/user-interface.ts":
+/*!*******************************!*\
+  !*** ./src/user-interface.ts ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nvar UserInterface = /** @class */ (function () {\r\n    function UserInterface() {\r\n        this.createCanvas();\r\n    }\r\n    UserInterface.getInstance = function () {\r\n        if (!UserInterface.instance) {\r\n            UserInterface.instance = new UserInterface();\r\n        }\r\n        return this.instance;\r\n    };\r\n    UserInterface.prototype.getCanvas = function () {\r\n        return this.canvas;\r\n    };\r\n    UserInterface.prototype.createCanvas = function () {\r\n        this.canvas = document.createElement('canvas');\r\n        this.canvas.width = 600;\r\n        this.canvas.height = 600;\r\n        document.body.append(this.canvas);\r\n    };\r\n    return UserInterface;\r\n}());\r\nexports.UserInterface = UserInterface;\r\n\n\n//# sourceURL=webpack:///./src/user-interface.ts?");
 
 /***/ })
 
