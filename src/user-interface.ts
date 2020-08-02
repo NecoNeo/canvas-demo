@@ -22,6 +22,8 @@ export class UserInterface {
     this.canvas = document.createElement('canvas');
     this.canvas.width = 600;
     this.canvas.height = 600;
+    this.canvas.style.height = '600px';
+    this.canvas.style.width = '600px';
     document.body.append(this.canvas);
   }
 
